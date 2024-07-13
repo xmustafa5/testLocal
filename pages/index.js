@@ -4,10 +4,11 @@ function MyComponent() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     async function getData() {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/todos/1`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_APP_VARIABLE}/todos/1`);
         if (!res.ok) {
           throw new Error(`Error: ${res.status}`);
         }
@@ -33,7 +34,7 @@ function MyComponent() {
 
   return (
     <div>
-      <h1>Fetched Data:{import.meta.env.VITE_API_URL}</h1>
+      <h1>Fetched Data:{process.env.NEXT_PUBLIC_APP_VARIABLE}</h1>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
